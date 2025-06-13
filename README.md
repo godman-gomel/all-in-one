@@ -51,7 +51,12 @@ sudo apt install python3.10 python3.10-distutils python3.10-dev build-essential
 Visit [PyTorch](https://pytorch.org/) and install the appropriate version for your system.
 
 ### 2. Install NATTEN (Required for Linux and Windows; macOS will auto-install)
-* **Linux**: Download from [NATTEN website](https://www.shi-labs.com/natten/)
+* **Linux**: Download from [NATTEN website](https://www.shi-labs.com/natten/). Убедитесь, что версия CUDA и Python в названии файла соответствует вашей установленной версии PyTorch (например, `natten-<ver>+torch<...>cu<...>-cp<py>-...whl`). Пример для CUDA 12.6, PyTorch 2.7 и Python 3.10:
+```bash
+wget https://github.com/SHI-Labs/NATTEN/releases/download/v0.20.0/natten-0.20.0+torch270cu126-cp310-cp310-linux_x86_64.whl
+pip install natten-0.20.0+torch270cu126-cp310-cp310-linux_x86_64.whl
+```
+Для других версий возьмите аналогичный файл.
 * **macOS**: Auto-installs with `allin1`.
 * **Windows**: Build from source:
 ```shell
