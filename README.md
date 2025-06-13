@@ -33,14 +33,16 @@ This package provides models for music structure analysis, predicting:
 
 ## Требования
 
-Поддерживаются версии Python 3.8–3.11. 
+Поддерживаются версии Python 3.8–3.11.
 Для Ubuntu Python 3.10/3.11 можно установить из PPA [`deadsnakes`](https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa):
 
 ```bash
 sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt update
-sudo apt install python3.10 python3.10-distutils
+sudo apt install python3.10 python3.10-distutils python3.10-dev build-essential
 ```
+
+- Требуются заголовочные файлы для сборки зависимостей (`python3.<версия>-dev`). Для другой версии Python устанавливайте соответствующий пакет `python3.<версия>-dev`.
 
 ## Installation
 
