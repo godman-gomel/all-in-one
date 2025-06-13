@@ -27,7 +27,7 @@ dependencies = [
   "numpy",
   "librosa",
   "natten; platform_system == 'Darwin'",
-  "demucs",
+  "demucs==4.0.1",
   "hydra-core",
   "omegaconf",
   "huggingface_hub",
