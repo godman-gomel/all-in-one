@@ -67,6 +67,19 @@ make
 pip install git+https://github.com/CPJKU/madmom  # install the latest madmom directly from GitHub
 pip install allin1  # install this package
 ```
+If you are using `pip>=25`, the build process of the `demucs` dependency might fail.
+As a temporary workaround, either downgrade pip and setuptools:
+
+```shell
+pip install "pip<25" "setuptools<69"
+pip install allin1
+```
+
+or set the environment variable before installation:
+
+```shell
+SETUPTOOLS_USE_DISTUTILS=stdlib pip install allin1
+```
 
 ### 4. (Optional) Install FFmpeg for MP3 support
 
