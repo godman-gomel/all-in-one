@@ -7,7 +7,15 @@ import math
 import torch
 from abc import ABC,  abstractmethod
 from typing import Optional, Tuple, Callable
-from natten.functional import na1d_av, na1d_qk, na2d_av, na2d_qk
+try:
+  from natten.functional import na1d_av, na1d_qk, na2d_av, na2d_qk
+except ImportError:  # старые версии NATTEN
+  from natten.functional import (
+    natten1dav as na1d_av,
+    natten1dqkrpb as na1d_qk,
+    natten2dav as na2d_av,
+    natten2dqkrpb as na2d_qk,
+  )
 from ..config import Config
 from .utils import *
 
@@ -51,7 +59,7 @@ class DinatDropPath(nn.Module):
 class _NeighborhoodAttentionNd(ABC, nn.Module):
   # rpb is learnable relative positional biases; same concept is used Swin.
   rpb: nn.Parameter
-  na1d_qk: Callable
+  na_qk: Callable
   nattendav: Callable
   
   def __init__(
