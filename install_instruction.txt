@@ -1,0 +1,33 @@
+Инструкция для установки рабочего окружения для allin1 под Ubuntu
+
+cd /mnt/d/DyNEQ/DyNEQTrainer/all-in-one
+source env310/bin/activate
+
+
+# 0. Удаляем старые версии, если они есть
+python3.10 -m pip uninstall -y allin1 natten madmom torch torchvision torchaudio
+
+# 1. Обновляем pip (рекомендуется)
+python3.10 -m pip install --upgrade pip
+
+# 2. Устанавливаем PyTorch, torchvision и torchaudio с поддержкой CUDA 12.6
+python3.10 -m pip install \
+  torch==2.5.0+cu121 \
+  torchvision==0.20.0+cu121 \
+  torchaudio==2.5.0+cu121 \
+  --extra-index-url https://download.pytorch.org/whl/cu121
+  
+# 3. Скачиваем подходящий wheel для NATTEN и устанавливаем его
+wget https://shi-labs.com/natten/wheels/cu121/torch2.5.0/natten-0.17.5%2Btorch250cu121-cp310-cp310-linux_x86_64.whl
+python3.10 -m pip install natten-0.17.5+torch250cu121-cp310-cp310-linux_x86_64.whl
+rm natten-0.17.5+torch250cu121-cp310-cp310-linux_x86_64.whl
+
+# 4. Устанавливаем madmom и сам пакет allin1
+sudo apt update
+Password: Klubok3113
+sudo apt install python3.10-dev build-essential  # ставит Python.h и компилятор
+python3.10 -m pip install git+https://github.com/CPJKU/madmom
+python3.10 -m pip install git+https://github.com/govi218/all-in-one.git@gov/update-deprecated
+
+# 5. (Опционально) ставим ffmpeg для работы с MP3
+sudo apt install ffmpeg
